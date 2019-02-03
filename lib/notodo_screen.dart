@@ -134,7 +134,7 @@ class _NoToDoScreenState extends State<NoToDoScreen> {
                             color: Colors.deepPurple,
                             fontSize: 25.0,
                             fontWeight: FontWeight.bold),
-                        hintText: 'Suff not to do!',
+                        hintText: 'Not to do!',
                         hintStyle: TextStyle(color: Colors.deepPurpleAccent),
                         icon: Icon(
                           Icons.note_add,
@@ -177,6 +177,10 @@ class _NoToDoScreenState extends State<NoToDoScreen> {
                 'id': item.id
               });
               handleSubmitUpdate(index, item);
+              await db.updateItem(newItemUpdated);
+              setState(() {
+                readNoToDoList(db);
+              });
             },
             child: Text('Submit')),
         FlatButton(
